@@ -1,13 +1,15 @@
-angular.module("findTwin").factory("FindTwinsService", ["Restangular", function(Restangular) {
-	var findTwins = function() {
-		return Restangular.all('findTwins').get().then(function(data) {
-			return data;
-		}).then(function(){
-			return [];
-		});
-	};
+function FindTwinsService(Restangular) {
+  var findTwins = function() {
+    Restangular.all('findTwins').get().then(function(data) {
+      return data;
+    }).then(function(){
+      return [];
+    });
+  };
 
-	return {
-		findTwins: findTwins
-	};
-}]);
+  return {
+    findTwins: findTwins
+  };
+}
+
+angular.module("findTwins").factory("FindTwinsService", ["Restangular", FindTwinsService]);

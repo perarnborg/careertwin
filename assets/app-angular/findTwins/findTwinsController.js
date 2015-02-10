@@ -1,7 +1,7 @@
-angular.module("findTwin").controller("FindTwinsCtrl", ["$scope", "AuthenticationService", "FindTwinsService", function($scope, AuthenticationService, FindTwinsService) {
-	$scope.currentUser = AuthenticationService.getCurrentUser();
-//	$scope.currentUser = AuthenticationService.getCurrentUser();
-//  FindTwinsService.findTwins().then(function(twins) {
-//    $scope.twins = twins;
-//  });
-}]);
+function FindTwinsCtrl (AuthenticationService, FindTwinsService) {
+	this.currentUser = AuthenticationService.currentCustomer;
+}
+
+angular
+  .module('findTwins')
+  .controller('FindTwinsCtrl', ["$scope", "AuthenticationService", "FindTwinsService", FindTwinsCtrl]);

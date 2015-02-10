@@ -1,18 +1,24 @@
-angular.module("careertwin").factory("AuthenticationService", ["$window", "Restangular", function($window, Restangular) {
-	var signin = function() {
-		$window.location.href = '/oauth/signin';
-	};
+function AuthenticationService($window, Restangular) {
+  var service = {};
 
-	var getCurrentUser = function() {
-		return Restangular.one('current-user').get().then(function(data) {
-			return data;
-		}).then(function(a,b,c){
-			return false;
-		});
-	};
+  service.signin = function() {
+    $window.location.href = '/oauth/signin';
+  };
 
-	return {
-		signin: signin,
-		getCurrentUser: getCurrentUser
-	};
-}]);
+  service.currentCustomer = null;
+  service.getCurrentUser = function() {
+    Restangular.one('current-user').get().then(function(data) {
+      console.log(data);
+  	  service.currentCustomer = data;
+  	  return data;
+    }).then(function(){
+  	  service.currentCustomer = false;
+  	  return false;
+    });
+  };
+
+  return service;
+}
+
+angular.module("careertwin")
+  .factory("AuthenticationService", ["$window", "Restangular", AuthenticationService]);

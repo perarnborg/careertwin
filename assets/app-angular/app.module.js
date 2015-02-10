@@ -1,11 +1,11 @@
 angular.module("careertwin", [
 	"ngRoute",
 	"restangular",
-	"findTwin"
+	"findTwins"
 ])
 .run(function() {
 });
 
-angular.module("findTwin", [
+angular.module("findTwins", [
 	"restangular"
 ]);
