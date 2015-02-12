@@ -8,10 +8,12 @@ var concat = require("gulp-concat");
 module.exports = function() {
 	var filter = gulpfilter(["./assets/js/vendor/*.js", "./bower_components"]);
 	return gulp.src([
+		"./assets/app-angular/iife-open.js",
 		"./assets/app-angular/app.module.js",
 		"./assets/app-angular/app.routes.js",
 		"./assets/app-angular/app.config.js",
 		"./assets/app-angular/*/*.js"
+		"./assets/app-angular/iife-close.js",
 	])
 	.pipe(filter)
 	.pipe(jshint({
