@@ -6,7 +6,7 @@ function FindTwinsCtrl($location, AuthenticationService, FindTwinsService, getCu
   if(this.currentUser) {
     this.twins = FindTwinsService.twins;
   } else {
-    $location.path('/');
+    window.location = '/oauth/signin';
   }
 }
 

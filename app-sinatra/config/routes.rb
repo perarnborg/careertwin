@@ -18,8 +18,7 @@ namespace '/api' do
 	end
 
 	get "/current-user" do
-    	@api.current_user.to_json if @api
-#		"funkar"
+		@api.current_user.to_json if @api
 	end
 
     get "/find-twins" do
@@ -29,10 +28,6 @@ end
 
 namespace '/oauth' do
 	oauth = OauthController.new
-
-	get "/test" do
-		"funkar"
-	end
 
 	get "/signin" do
 		url = oauth.authorization_code_url
