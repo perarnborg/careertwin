@@ -1,15 +1,21 @@
+/**
+ * @ngInject
+ */
 function FindTwinsService(Restangular) {
-  var findTwins = function() {
-    Restangular.all('findTwins').get().then(function(data) {
-      return data;
-    }).then(function(){
-      return [];
+  var service = {};
+
+  service.twins = null;
+  service.findTwins = function() {
+    return Restangular.all('find-twins').getList().then(function(data) {
+      service.twins = data;
+      return service.twins
+    }, function(){
+      service.twins = []
+      return service.twins
     });
   };
 
-  return {
-    findTwins: findTwins
-  };
+  return service;
 }
-
-angular.module("findTwins").factory("FindTwinsService", ["Restangular", FindTwinsService]);
+angular.module("findTwins")
+  .factory("FindTwinsService", FindTwinsService);

@@ -1,17 +1,13 @@
 function Routes($routeProvider) {
-  $routeProvider.
-    when('/find-twins', {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'app-angular/index/indexView.html'
+    })
+    .when('/find-twins', {
       templateUrl: 'app-angular/findTwins/findTwinsView.html',
       controller: 'FindTwinsCtrl',
-      controllerAs: 'FindTwins',
-      resolve: {
-        getCurrentUser: function (AuthenticationService) {
-          return AuthenticationService.getCurrentUser();
-        }
-      }
-    }).
-    otherwise({
-      redirectTo: '/'
+      controllerAs: 'findTwins',
+      resolve: FindTwinsCtrl.resolve
     });
 }
 

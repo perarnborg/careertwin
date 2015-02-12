@@ -7,7 +7,7 @@ var concat = require("gulp-concat");
 
 module.exports = function() {
 	var filter = gulpfilter(["./assets/js/vendor/*.js", "./bower_components"]);
-	gulp.src([
+	return gulp.src([
 		"./bower_components/lodash/dist/lodash.js",
 		"./bower_components/angular/angular.js",
 		"./bower_components/angular-route/angular-route.js",
@@ -46,7 +46,7 @@ module.exports = function() {
 	.pipe(concat("vendor.js"))
 	.pipe(gulp.dest("./assets/js"));
 
-	gulp.src([
+	return gulp.src([
 		"./assets/app-angular/app.module.js",
 		"./assets/app-angular/app.routes.js",
 		"./assets/app-angular/app.config.js",
@@ -54,6 +54,4 @@ module.exports = function() {
 	])
 	.pipe(concat("app.js"))
 	.pipe(gulp.dest("./assets/js"));
-
-	return gulp
 };

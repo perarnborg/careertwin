@@ -1,7 +1,12 @@
 var gulp = require('./gulp')([
-	'javascript',
+	'javascript-vendor',
+	'javascript-app',
 	{
-		dependencies: ['javascript'],
+		dependencies: ['javascript-app'],
+		name: 'ng-annotate'
+	},
+	{
+		dependencies: ['javascript-vendor', 'ng-annotate'],
 		name: 'uglify'
 	},
 	'sass',
@@ -13,4 +18,4 @@ var gulp = require('./gulp')([
 	'watch'
 ]);
 
-gulp.task("default", ["bower", "javascript", "sass"]);
+gulp.task("default", ["bower", "javascript-vendor", "ng-annotate", "sass"]);
