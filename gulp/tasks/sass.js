@@ -1,7 +1,6 @@
 var gulp = require("gulp");
 var sourcemaps = require("gulp-sourcemaps");
 var sass = require("gulp-sass");
-var pxtorem = require("gulp-pxtorem");
 var autoprefixer = require("gulp-autoprefixer");
 var notify = require("gulp-notify");
 

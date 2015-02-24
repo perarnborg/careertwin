@@ -1,15 +1,15 @@
 class OauthController
-	def authorization_code_url
+	def authorization_code_url(host_with_port)
 		authorization_code_url = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code'
 		authorization_code_url += '&client_id=' + LINKEDIN_KEY
 		authorization_code_url += '&scope=r_fullprofile'
 		authorization_code_url += '&state=' + LINKEDIN_STATE
-		callback_url = CGI.escape 'http://localhost:4567/oauth/callback'
+		callback_url = CGI.escape 'http://' + host_with_port + '/oauth/callback'
 		authorization_code_url += '&redirect_uri=' + callback_url
 		authorization_code_url
     end
 
-    def access_token(params)
+    def access_token(host_with_port, params)
     	if params[:code] and params[:state] == LINKEDIN_STATE
 			access_token_url = 'https://www.linkedin.com/uas/oauth2/accessToken' #?grant_type=authorization_code'
 
@@ -18,7 +18,7 @@ class OauthController
 			access_token_params[:code] = params[:code]
 			access_token_params[:client_id] = LINKEDIN_KEY
 			access_token_params[:client_secret] = LINKEDIN_SECRET
-			access_token_params[:redirect_uri] = 'http://localhost:4567/oauth/callback'
+			access_token_params[:redirect_uri] = 'http://' + host_with_port + '/oauth/callback'
 
 		    http = Curl.post access_token_url, access_token_params
 		    result = JSON.parse(http.body_str)

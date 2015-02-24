@@ -5,6 +5,7 @@ function LoaderDirective($rootScope) {
   return {
     restrict: 'A',
     link: function ($scope, $element, $attrs) {
+      $element.addClass('loader');
       $rootScope.$on('$routeChangeStart', function () {
         $element.removeClass('ng-hide');
       });

@@ -31,6 +31,7 @@ configure do
   set :public_folder, "assets"
   set :views, ["views"]
   set(:show_debuginfo) { false }
+  set :cache_ttl, 86400
   enable :sessions
 #  enable :cross_origin
 

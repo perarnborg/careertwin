@@ -1,0 +1,23 @@
+.loader {
+  border: dotted orange 4px;
+  border-radius: 30px;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  text-indent: -999em;
+  margin: -15px -15px 0 0;
+  -webkit-animation: loaderRotate 3s linear infinite;
+  animation: loaderRotate 3s linear infinite;
+}
+
+@-webkit-keyframes loaderRotate {
+  0% {-webkit-transform:rotate(0deg); transform:rotate(0deg);}
+  100% {-webkit-transform:rotate(360deg); transform:rotate(360deg);}
+}
+@keyframes loaderRotate {
+  0% {-webkit-transform:rotate(0deg); transform:rotate(0deg);}
+  100% {-webkit-transform:rotate(360deg); transform:rotate(360deg);}
+}
